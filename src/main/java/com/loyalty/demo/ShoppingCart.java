@@ -2,6 +2,7 @@ package com.loyalty.demo;
 
 import com.loyalty.demo.service.ShoppingCartProcessor;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  * Created by abakulin on 27/01/2018.
  */
 @Getter
+@Setter
 public class ShoppingCart {
     List<CartItem> shoppingItems;
 
@@ -19,6 +21,9 @@ public class ShoppingCart {
     ZonedDateTime shoppingDateTime;
 
     String customerId;
+
+    public ShoppingCart() {
+    }
 
     public ShoppingCart(List<CartItem> shoppingItems, Double total, ZonedDateTime shoppingDateTime, String customerId) {
         this.shoppingItems = shoppingItems;
