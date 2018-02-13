@@ -1,8 +1,13 @@
 package com.loyalty.demo.config;
 
-import com.loyalty.demo.DiscountRule;
-import com.loyalty.demo.DiscountsRepository;
-import com.loyalty.demo.MatchType;
+import com.loyalty.demo.Rule;
+import com.loyalty.demo.RuleAction;
+import com.loyalty.demo.RulesRepository;
+import com.loyalty.demo.rule.condition.CartTotalCondition;
+import com.loyalty.demo.rule.condition.ProductNameCondition;
+import com.loyalty.demo.rule.effect.PercentDiscountForProductAction;
+import com.loyalty.demo.rule.effect.PercentDiscountForTotalAction;
+import com.loyalty.demo.service.RulesMatcher;
 import com.loyalty.demo.service.ShoppingCartProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,19 +17,38 @@ import java.util.*;
 @Configuration
 public class ApplicationConfig {
     @Bean
-    public DiscountsRepository discountsRepository() {
-        Map<MatchType, List<DiscountRule>> cache = new HashMap<>();
-        cache.put(MatchType.PRODUCT, Collections.singletonList(new DiscountRule(MatchType.PRODUCT, "tv", 10)));
-        cache.put(MatchType.SKU, Collections.singletonList(new DiscountRule(MatchType.SKU, "iphone 7 black", 15)));
-        cache.put(MatchType.TOTAL, Collections.singletonList(new DiscountRule(MatchType.TOTAL, "750", 20)));
-        cache.put(MatchType.DATETIME, new ArrayList<>());
-        cache.put(MatchType.CUSTOMER, Collections.singletonList(new DiscountRule(MatchType.CUSTOMER, "John Snow", 5)));
+    public RulesRepository discountsRepository() {
+        List<Rule> cache = new ArrayList<>();
 
-        return new DiscountsRepository(cache);
+        Rule discount5percOnTv = new Rule(
+                new ProductNameCondition("ShoppingCart -> CartItem -> Product:name", "tv"),
+                new PercentDiscountForProductAction("ShoppingCart -> CartItem:price", "Discount 5%", 0.05, "tv")
+        );
+
+        Rule discount10percOnSmartphone = new Rule(
+                new ProductNameCondition("ShoppingCart->CartItem->Product:name", "smartphone"),
+                new PercentDiscountForProductAction("ShoppingCart -> CartItem:price", "Discount 10%", 0.1, "smartphone")
+        );
+
+        Rule discount5percOnTotalGreatThan500 = new Rule(
+                new CartTotalCondition("ShoppingCart:total", 500.0),
+                new PercentDiscountForTotalAction("ShoppingCart:total", "Discount 5%", 0.05)
+        );
+
+        cache.add(discount5percOnTv);
+        cache.add(discount10percOnSmartphone);
+        cache.add(discount5percOnTotalGreatThan500);
+
+        return new RulesRepository(cache);
     }
 
     @Bean
-    public ShoppingCartProcessor shoppingCartProcessor(DiscountsRepository repository) {
-        return new ShoppingCartProcessor(repository);
+    public RulesMatcher rulesMatcher(RulesRepository repository) {
+        return new RulesMatcher(repository.findAll());
+    }
+
+    @Bean
+    public ShoppingCartProcessor shoppingCartProcessor(RulesMatcher rulesMatcher) {
+        return new ShoppingCartProcessor(rulesMatcher);
     }
 }
