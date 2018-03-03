@@ -25,6 +25,10 @@ public class ShoppingCart {
     public ShoppingCart() {
     }
 
+    public ShoppingCart(String customerId) {
+        this.customerId = customerId;
+    }
+
     public ShoppingCart(List<CartItem> shoppingItems, Double total, ZonedDateTime shoppingDateTime, String customerId) {
         this.shoppingItems = shoppingItems;
         this.total = total;
