@@ -1,0 +1,16 @@
+package com.loyalty.demo
+
+global java.util.List list
+global java.lang.String msg
+global org.slf4j.Logger logger
+
+import com.loyalty.demo.ShoppingCart
+
+rule "Shopping cart from Alex is passed"
+    when
+        // check shopping cart
+        ShoppingCart( customerId == "alex")
+    then
+        // print message
+        logger.info("Shopping from Alex cart presents: " + msg);
+end
