@@ -1,7 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kmodule xmlns="http://www.drools.org/xsd/kmodule">
-
-    <kbase name="LoyaltyKB" packages="com.loyalty.demo" default="true">
-        <ksession name="LoyaltyKS"/>
-    </kbase>
-</kmodule>
+<kmodule xmlns="http://www.drools.org/xsd/kmodule"/>

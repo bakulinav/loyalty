@@ -22,14 +22,19 @@ public class ShoppingCart {
 
     String customerId;
 
+    Boolean discounted;
+
     public ShoppingCart() {
+        discounted = false;
     }
 
     public ShoppingCart(String customerId) {
+        this();
         this.customerId = customerId;
     }
 
     public ShoppingCart(List<CartItem> shoppingItems, Double total, ZonedDateTime shoppingDateTime, String customerId) {
+        this();
         this.shoppingItems = shoppingItems;
         this.total = total;
         this.shoppingDateTime = shoppingDateTime;
