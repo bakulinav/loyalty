@@ -1,16 +1,25 @@
 package com.loyalty.demo
 
-global java.util.List list
-global java.lang.String msg
 global org.slf4j.Logger logger
 
 import com.loyalty.demo.ShoppingCart
+import com.loyalty.demo.CartItem
 
 rule "Shopping cart from Alex is passed"
     when
         // check shopping cart
-        ShoppingCart( customerId == "alex")
+        $sc: ShoppingCart( customerId == "alex")
     then
         // print message
-        logger.info("Shopping from Alex cart presents: " + msg);
+        logger.info("Shopping cart is from Alex");
+        $sc.setDiscounted(true);
+end
+
+rule "Shopping cart with product iPhone is discounted"
+   when
+        $sc: ShoppingCart()
+        $ci: CartItem( product == "iphone")
+   then
+        logger.info("Shopping cart from " + $sc.getCustomerId() + " has iPhone item: " + $sc.getShoppingItems().get(0).getProduct());
+        $sc.setDiscounted(true);
 end

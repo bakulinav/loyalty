@@ -17,8 +17,12 @@ public class CartItem {
     public CartItem() {
     }
 
-    public CartItem(String product, String sku, Double price, Integer count) {
+    public CartItem(String product) {
         this.product = product;
+    }
+
+    public CartItem(String product, String sku, Double price, Integer count) {
+        this(product);
         this.sku = sku;
         this.price = price;
         this.count = count;
