@@ -1,6 +1,5 @@
-package com.loyalty.demo;
+package com.loyalty.engine;
 
-import com.loyalty.demo.service.ShoppingCartProcessor;
 import lombok.Getter;
 import lombok.Setter;
 

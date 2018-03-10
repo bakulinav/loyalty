@@ -1,4 +1,4 @@
-package com.loyalty.demo;
+package com.loyalty.engine;
 
 import lombok.Getter;
 import lombok.Setter;
