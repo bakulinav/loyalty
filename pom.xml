@@ -6,7 +6,10 @@
 	<groupId>com.loyalty</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<modules>
+		<module>engine</module>
+	</modules>
+	<packaging>pom</packaging>
 
 	<name>loyalty</name>
 	<description>Demo of Loyalty system</description>
@@ -24,18 +27,6 @@
 		<java.version>1.8</java.version>
 		<drools.version>7.6.0.Final</drools.version>
 	</properties>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.drools</groupId>
-				<artifactId>drools-bom</artifactId>
-				<type>pom</type>
-				<version>${drools.version}</version>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<dependencies>
 
@@ -81,21 +72,6 @@
 			<!--<artifactId>spring-boot-starter-web-services</artifactId>-->
 		<!--</dependency>-->
 
-		<!-- Drools -->
-		<dependency>
-			<groupId>org.kie</groupId>
-			<artifactId>kie-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>drools-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>drools-compiler</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-
 		<!-- Storage -->
 		<!--<dependency>-->
 			<!--<groupId>com.h2database</groupId>-->
@@ -113,12 +89,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.kie</groupId>
-				<artifactId>kie-maven-plugin</artifactId>
-				<version>${drools.version}</version>
-				<extensions>true</extensions>
 			</plugin>
 		</plugins>
 	</build>

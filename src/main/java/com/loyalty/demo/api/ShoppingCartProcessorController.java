@@ -1,6 +1,5 @@
 package com.loyalty.demo.api;
 
-import com.loyalty.demo.ShoppingCart;
 import com.loyalty.demo.service.ShoppingCartProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -2,8 +2,8 @@ package com.loyalty.demo
 
 global org.slf4j.Logger logger
 
-import com.loyalty.demo.ShoppingCart
-import com.loyalty.demo.CartItem
+import com.loyalty.engine.ShoppingCart
+import com.loyalty.engine.CartItem
 
 rule "Shopping cart from Alex is passed"
     when

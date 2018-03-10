@@ -1,4 +1,4 @@
-package com.loyalty.demo.config;
+package com.loyalty.engine.config;
 
 
 import org.kie.api.KieServices;
