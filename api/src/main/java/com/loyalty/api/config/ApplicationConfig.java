@@ -1,6 +1,6 @@
-package com.loyalty.demo.config;
+package com.loyalty.api.config;
 
-import com.loyalty.demo.service.ShoppingCartProcessor;
+import com.loyalty.api.service.ShoppingCartProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
