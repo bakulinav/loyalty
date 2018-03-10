@@ -1,4 +1,4 @@
-package com.loyalty.engine;
+package com.loyalty.engine.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,13 +9,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CartItem {
-    String product;
-    String sku;
-    Double price;
-    Integer count;
+    private String product;
+    private String sku;
+    private Double price;
+    private Integer count;
 
-    public CartItem() {
-    }
+    public CartItem() {}
 
     public CartItem(String product) {
         this.product = product;

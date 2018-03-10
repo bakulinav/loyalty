@@ -1,4 +1,4 @@
-package com.loyalty.engine;
+package com.loyalty.engine.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,16 +12,16 @@ import java.util.List;
 @Getter
 @Setter
 public class ShoppingCart {
-    List<CartItem> shoppingItems;
+    private List<CartItem> shoppingItems;
 
-    Double total;
+    private Double total;
 
     // 2011-12-03T10:15:30+01:00
-    ZonedDateTime shoppingDateTime;
+    private ZonedDateTime shoppingDateTime;
 
-    String customerId;
+    private String customerId;
 
-    Boolean discounted;
+    private Boolean discounted;
 
     public ShoppingCart() {
         discounted = false;
