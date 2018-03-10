@@ -28,13 +28,14 @@ public class RulesProcessor {
         KieBase kBase = getKnowledgeBase(knowledgeBaseId);
 
         switch (mode) {
-            case STATEFUL: statefulEngine.run(shoppingCart, kBase);
-            case STATELESS: statelessEngine.run(shoppingCart, kBase);
+            case STATEFUL: statefulEngine.run(shoppingCart, kBase); break;
+            case STATELESS: statelessEngine.run(shoppingCart, kBase); break;
+            default:
+                throw new RuntimeException("Unexpected EngineMode for processor: " + mode.toString());
         }
     }
 
     private KieBase getKnowledgeBase(String knowledgeBaseId) {
-        // get default KB TODO: load KB by knowledgeBaseId
-        return this.kc.getKieBase();
+        return this.kc.getKieBase(knowledgeBaseId);
     }
 }

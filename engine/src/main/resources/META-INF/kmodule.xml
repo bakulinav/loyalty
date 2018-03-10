@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kmodule xmlns="http://www.drools.org/xsd/kmodule"/>
+<kmodule xmlns="http://www.drools.org/xsd/kmodule">
+    <kbase name="clientID1" packages="com.loyalty.engine.clientID1"/>
+    <kbase name="clientID2" packages="com.loyalty.engine.clientID2"/>
+</kmodule>

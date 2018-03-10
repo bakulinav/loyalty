@@ -26,12 +26,20 @@ public class EngineApplication implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
+        // client 1
+        ShoppingCart cartClient1 = new ShoppingCart("alex");
+        log.info("Cart before: Discounted="+ cartClient1.getDiscounted());
 
-        ShoppingCart cart = new ShoppingCart("alex");
-        log.info("Cart before: Discounted="+ cart.getDiscounted());
+        this.processor.process(EngineMode.STATELESS, cartClient1, "clientID1");
 
-        this.processor.process(EngineMode.STATELESS, cart, "clientId");
+        log.info("Cart after: Discounted="+ cartClient1.getDiscounted());
 
-        log.info("Cart after: Discounted="+ cart.getDiscounted());
+        // client 2
+        ShoppingCart cartClient2 = new ShoppingCart("mike");
+        log.info("Cart before: Discounted="+ cartClient2.getDiscounted());
+
+        this.processor.process(EngineMode.STATELESS, cartClient2, "clientID2");
+
+        log.info("Cart after: Discounted="+ cartClient2.getDiscounted());
     }
 }

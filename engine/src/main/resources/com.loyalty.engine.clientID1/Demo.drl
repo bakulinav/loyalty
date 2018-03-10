@@ -1,4 +1,4 @@
-package com.loyalty.demo
+package com.loyalty.engine.clientID1
 
 global org.slf4j.Logger logger
 
