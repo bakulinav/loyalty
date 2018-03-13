@@ -1,14 +1,16 @@
 package com.loyalty.engine;
 
+import com.loyalty.engine.model.EngineMode;
 import com.loyalty.engine.model.ShoppingCart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
-//@EnableWebMvc
+@EnableWebMvc
 public class EngineApplication implements CommandLineRunner {
 
 	private static final Logger log = LoggerFactory.getLogger(EngineApplication.class);

@@ -47,6 +47,12 @@
             <artifactId>drools-compiler</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- API -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
