@@ -8,11 +8,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
 		<module>engine</module>
+		<module>api</module>
 	</modules>
 	<packaging>pom</packaging>
 
 	<name>loyalty</name>
-	<description>Demo of Loyalty system</description>
+	<description>Loyalty system project</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -57,20 +58,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- Web -->
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-data-rest</artifactId>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-web</artifactId>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-web-services</artifactId>-->
-		<!--</dependency>-->
 
 		<!-- Storage -->
 		<!--<dependency>-->

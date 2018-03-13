@@ -1,0 +1,68 @@
+{
+	"info": {
+		"name": "Loyalty",
+		"_postman_id": "ec6c575c-2b0f-85c9-9f2c-728f1b4fa551",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Process simple cart",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"shoppingItems\":[\n\t\t{\"product\": \"smartphone\", \"sku\": \"iphone 7 black\", \"price\": \"780.0\", \"count\": 1}\n\t],\n\t\"total\": 780.0,\n    \"shoppingDateTime\": \"2018-01-12T10:15:30+04:00\",\n    \"customerId\": \"Tyrion Lannister\"\n}"
+				},
+				"url": {
+					"raw": "http://{{loyalty_host}}:{{loyalty_port}}/cart-processor",
+					"protocol": "http",
+					"host": [
+						"{{loyalty_host}}"
+					],
+					"port": "{{loyalty_port}}",
+					"path": [
+						"cart-processor"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Process batch cart",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"count\": 2,\n\t\"items\": [\n\t\t{\n\t\t\t\"shoppingItems\":[\n\t\t\t\t{\"product\": \"smartphone\", \"sku\": \"iphone 7 black\", \"price\": \"780.0\", \"count\": 1}\n\t\t\t],\n\t\t\t\"total\": 780.0,\n\t\t    \"shoppingDateTime\": \"2018-01-12T10:15:30+04:00\",\n\t\t    \"customerId\": \"Tyrion Lannister\"\n\t\t},\n\t\t{\n\t\t\t\"shoppingItems\":[\n\t\t\t\t{\"product\": \"laptop\", \"sku\": \"lenovo ideapad\", \"price\": \"850.0\", \"count\": 1}\n\t\t\t],\n\t\t\t\"total\": 850.0,\n\t\t    \"shoppingDateTime\": \"2018-01-12T10:15:31+04:00\",\n\t\t    \"customerId\": \"Mike Coolman\"\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "http://{{loyalty_host}}:{{loyalty_port}}/batch-cart-processor",
+					"protocol": "http",
+					"host": [
+						"{{loyalty_host}}"
+					],
+					"port": "{{loyalty_port}}",
+					"path": [
+						"batch-cart-processor"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
