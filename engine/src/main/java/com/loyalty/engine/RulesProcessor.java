@@ -1,5 +1,6 @@
 package com.loyalty.engine;
 
+import com.loyalty.engine.model.EngineMode;
 import com.loyalty.engine.model.ShoppingCart;
 import org.kie.api.KieBase;
 import org.kie.api.runtime.KieContainer;

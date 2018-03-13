@@ -6,9 +6,6 @@ import lombok.Setter;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-/**
- * Created by abakulin on 27/01/2018.
- */
 @Getter
 @Setter
 public class ShoppingCart {
@@ -38,5 +35,16 @@ public class ShoppingCart {
         this.total = total;
         this.shoppingDateTime = shoppingDateTime;
         this.customerId = customerId;
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingCart{" +
+                "shoppingItems=" + shoppingItems +
+                ", total=" + total +
+                ", shoppingDateTime=" + shoppingDateTime +
+                ", customerId='" + customerId + '\'' +
+                ", discounted=" + discounted +
+                '}';
     }
 }
