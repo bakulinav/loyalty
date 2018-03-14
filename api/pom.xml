@@ -15,7 +15,19 @@
     <packaging>jar</packaging>
 
     <dependencies>
-         <!--Web-->
+        <!-- In-project dependencies-->
+        <dependency>
+            <groupId>com.loyalty</groupId>
+            <artifactId>model</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.loyalty</groupId>
+            <artifactId>dto</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!--Web-->
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
             <!--<artifactId>spring-boot-starter-data-rest</artifactId>-->

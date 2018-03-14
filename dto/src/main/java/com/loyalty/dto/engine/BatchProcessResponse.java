@@ -1,4 +1,4 @@
-package com.loyalty.engine.dto;
+package com.loyalty.dto.engine;
 
 import lombok.Getter;
 import lombok.Setter;

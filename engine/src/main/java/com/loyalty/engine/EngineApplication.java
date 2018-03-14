@@ -1,7 +1,7 @@
 package com.loyalty.engine;
 
-import com.loyalty.engine.model.EngineMode;
-import com.loyalty.engine.model.ShoppingCart;
+import com.loyalty.model.EngineMode;
+import com.loyalty.model.ShoppingCart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

@@ -1,4 +1,4 @@
-package com.loyalty.api.model;
+package com.loyalty.model;
 
 import lombok.Getter;
 import lombok.Setter;
