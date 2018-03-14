@@ -9,6 +9,8 @@
 	<modules>
 		<module>engine</module>
 		<module>api</module>
+		<module>dto</module>
+		<module>model</module>
 	</modules>
 	<packaging>pom</packaging>
 
@@ -70,15 +72,5 @@
 			<!--<artifactId>spring-boot-starter-data-mongodb</artifactId>-->
 		<!--</dependency>-->
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
 
 </project>

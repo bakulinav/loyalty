@@ -1,7 +1,7 @@
-package com.loyalty.engine.dto;
+package com.loyalty.dto.engine;
 
-import com.loyalty.engine.model.EngineMode;
-import com.loyalty.engine.model.ShoppingCart;
+import com.loyalty.model.EngineMode;
+import com.loyalty.model.ShoppingCart;
 import lombok.Getter;
 import lombok.Setter;
 

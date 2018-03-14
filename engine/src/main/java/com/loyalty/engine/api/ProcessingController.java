@@ -1,9 +1,9 @@
 package com.loyalty.engine.api;
 
-import com.loyalty.engine.dto.BatchProcessRequest;
-import com.loyalty.engine.dto.BatchProcessResponse;
-import com.loyalty.engine.dto.ProcessRequest;
-import com.loyalty.engine.dto.ProcessResponse;
+import com.loyalty.dto.engine.BatchProcessRequest;
+import com.loyalty.dto.engine.BatchProcessResponse;
+import com.loyalty.dto.engine.ProcessRequest;
+import com.loyalty.dto.engine.ProcessResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/process")
@@ -39,6 +41,12 @@ public class ProcessingController {
 
         //TODO: send batch to processing
 
-        return new BatchProcessResponse();
+
+        List<ProcessResponse> items = batchRequest.getItems().stream()
+                .map(rq -> new ProcessResponse(rq.getShoppingCart(), rq.getClientId(), new ArrayList<>()))
+                .collect(Collectors.toList());
+
+
+        return new BatchProcessResponse((long) items.size(), items);
     }
 }

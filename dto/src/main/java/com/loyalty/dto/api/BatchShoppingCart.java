@@ -1,6 +1,6 @@
-package com.loyalty.api.dto;
+package com.loyalty.dto.api;
 
-import com.loyalty.api.model.ShoppingCart;
+import com.loyalty.model.ShoppingCart;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,7 +1,7 @@
 package com.loyalty.engine;
 
-import com.loyalty.engine.model.CartItem;
-import com.loyalty.engine.model.ShoppingCart;
+import com.loyalty.model.CartItem;
+import com.loyalty.model.ShoppingCart;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.command.Command;

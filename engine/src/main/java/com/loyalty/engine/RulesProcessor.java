@@ -1,7 +1,7 @@
 package com.loyalty.engine;
 
-import com.loyalty.engine.model.EngineMode;
-import com.loyalty.engine.model.ShoppingCart;
+import com.loyalty.model.EngineMode;
+import com.loyalty.model.ShoppingCart;
 import org.kie.api.KieBase;
 import org.kie.api.runtime.KieContainer;
 import org.springframework.beans.factory.annotation.Autowired;

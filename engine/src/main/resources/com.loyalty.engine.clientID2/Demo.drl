@@ -2,8 +2,8 @@ package com.loyalty.engine.clientID2
 
 global org.slf4j.Logger logger
 
-import com.loyalty.engine.model.ShoppingCart
-import com.loyalty.engine.model.CartItem
+import com.loyalty.model.ShoppingCart
+import com.loyalty.model.CartItem
 
 rule "Shopping cart from Mike is passed"
     when
