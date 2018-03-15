@@ -58,7 +58,7 @@ public class RunExample  implements CommandLineRunner {
         List list= new ArrayList<Integer>();
         loyaltyKS.setGlobal("list", list);
         loyaltyKS.setGlobal("msg", "Hello");
-        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("RulesProcessor"));
+        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("ShoppingCartProcessor"));
 
         // LISTENERS
 //		loyaltyKS.addEventListener(new DebugAgendaEventListener());
@@ -88,7 +88,7 @@ public class RunExample  implements CommandLineRunner {
 
         // GLOBALS
         List list= new ArrayList<Integer>();
-        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("RulesProcessor"));
+        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("ShoppingCartProcessor"));
 
         // FACTS
         log.info("Add facts");
@@ -112,7 +112,7 @@ public class RunExample  implements CommandLineRunner {
 
         // GLOBALS
         List list= new ArrayList<Integer>();
-        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("RulesProcessor"));
+        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("ShoppingCartProcessor"));
 
         // FACTS
         log.info("Add facts");
@@ -142,7 +142,7 @@ public class RunExample  implements CommandLineRunner {
 
         // GLOBALS
         List list= new ArrayList<Integer>();
-        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("RulesProcessor"));
+        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("ShoppingCartProcessor"));
 
         // FACTS
         log.info("Add facts");

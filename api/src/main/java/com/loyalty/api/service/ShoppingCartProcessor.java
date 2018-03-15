@@ -28,7 +28,7 @@ public class ShoppingCartProcessor {
         log.debug("Get Shopping cart for processing");
 
         ProcessResponse result = engineClient.processShoppingCart(
-                new ProcessRequest(shoppingCart, "test_client_1", EngineMode.STATELESS)
+                new ProcessRequest(shoppingCart, "clientID1", EngineMode.STATELESS)
         );
 
         log.debug("Shopping cart has been processed");
@@ -40,7 +40,7 @@ public class ShoppingCartProcessor {
         log.debug("Get Batch Shopping cart for processing");
 
         List<ProcessRequest> items = batch.getItems().stream()
-                .map(sc -> new ProcessRequest(sc, "test_client_1", EngineMode.STATELESS))
+                .map(sc -> new ProcessRequest(sc, "clientID1", EngineMode.STATELESS))
                 .collect(Collectors.toList());
 
         BatchProcessRequest req = new BatchProcessRequest((long) items.size(), items);

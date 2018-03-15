@@ -88,7 +88,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"shoppingCart\": {\n\t\t\"shoppingItems\":[\n\t\t\t{\"product\": \"smartphone\", \"sku\": \"iphone 7 black\", \"price\": \"780.0\", \"count\": 1}\n\t\t],\n\t\t\"total\": 780.0,\n\t    \"shoppingDateTime\": \"2018-01-12T10:15:30+04:00\",\n\t    \"customerId\": \"Tyrion Lannister\"\n\t},\n\t\"clientId\": \"test_client_1\",\n\t\"state\": \"STATELESS\"\n}"
+							"raw": "{\n\t\"shoppingCart\": {\n\t\t\"shoppingItems\":[\n\t\t\t{\"product\": \"smartphone\", \"sku\": \"iphone 7 black\", \"price\": \"780.0\", \"count\": 1}\n\t\t],\n\t\t\"total\": 780.0,\n\t    \"shoppingDateTime\": \"2018-01-12T10:15:30+04:00\",\n\t    \"customerId\": \"Tyrion Lannister\"\n\t},\n\t\"clientId\": \"clientID1\",\n\t\"state\": \"STATELESS\"\n}"
 						},
 						"url": {
 							"raw": "http://{{engine_host}}:{{engine_port}}/process/cart",
@@ -118,7 +118,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"count\": 2,\n\t\"items\": [\n\t\t{\n\t\t\t\"shoppingCart\": {\n\t\t\t\t\"shoppingItems\":[\n\t\t\t\t\t{\"product\": \"smartphone\", \"sku\": \"iphone 7 black\", \"price\": \"780.0\", \"count\": 1}\n\t\t\t\t],\n\t\t\t\t\"total\": 780.0,\n\t\t\t    \"shoppingDateTime\": \"2018-01-12T10:15:30+04:00\",\n\t\t\t    \"customerId\": \"Tyrion Lannister\"\n\t\t\t},\n\t\t\t\"clientId\": \"test_client_1\",\n\t\t\t\"state\": \"STATELESS\"\n\t\t},\n\t\t{\n\t\t\t\"shoppingCart\": {\n\t\t\t\t\"shoppingItems\":[\n\t\t\t\t\t{\"product\": \"laptop\", \"sku\": \"lenovo ideapad\", \"price\": \"850.0\", \"count\": 1}\n\t\t\t\t],\n\t\t\t\t\"total\": 850.0,\n\t\t\t    \"shoppingDateTime\": \"2018-01-12T10:15:31+04:00\",\n\t\t\t    \"customerId\": \"Mike Coolman\"\n\t\t\t},\n\t\t\t\"clientId\": \"test_client_2\",\n\t\t\t\"state\": \"STATELESS\"\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"count\": 2,\n\t\"items\": [\n\t\t{\n\t\t\t\"shoppingCart\": {\n\t\t\t\t\"shoppingItems\":[\n\t\t\t\t\t{\"product\": \"smartphone\", \"sku\": \"iphone 7 black\", \"price\": \"780.0\", \"count\": 1}\n\t\t\t\t],\n\t\t\t\t\"total\": 780.0,\n\t\t\t    \"shoppingDateTime\": \"2018-01-12T10:15:30+04:00\",\n\t\t\t    \"customerId\": \"Tyrion Lannister\"\n\t\t\t},\n\t\t\t\"clientId\": \"clientID1\",\n\t\t\t\"state\": \"STATELESS\"\n\t\t},\n\t\t{\n\t\t\t\"shoppingCart\": {\n\t\t\t\t\"shoppingItems\":[\n\t\t\t\t\t{\"product\": \"laptop\", \"sku\": \"lenovo ideapad\", \"price\": \"850.0\", \"count\": 1}\n\t\t\t\t],\n\t\t\t\t\"total\": 850.0,\n\t\t\t    \"shoppingDateTime\": \"2018-01-12T10:15:31+04:00\",\n\t\t\t    \"customerId\": \"Mike Coolman\"\n\t\t\t},\n\t\t\t\"clientId\": \"clientID2\",\n\t\t\t\"state\": \"STATELESS\"\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "http://{{engine_host}}:{{engine_port}}/process/batch-cart",

@@ -1,6 +1,6 @@
 package com.loyalty.engine.clientID2
 
-global org.slf4j.Logger logger
+global org.slf4j.Logger log
 
 import com.loyalty.model.ShoppingCart
 import com.loyalty.model.CartItem
@@ -11,7 +11,7 @@ rule "Shopping cart from Mike is passed"
         $sc: ShoppingCart( customerId == "mike")
     then
         // print message
-        logger.info("Shopping cart is from Mike");
+        log.info("Shopping cart is from Mike");
         $sc.setDiscounted(true);
 end
 

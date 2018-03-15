@@ -1,5 +1,6 @@
 package com.loyalty.engine;
 
+import com.loyalty.model.CartItem;
 import com.loyalty.model.EngineMode;
 import com.loyalty.model.ShoppingCart;
 import org.slf4j.Logger;
@@ -9,9 +10,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import java.util.Arrays;
+
 @SpringBootApplication
 @EnableWebMvc
-public class EngineApplication implements CommandLineRunner {
+//public class EngineApplication implements CommandLineRunner {
+public class EngineApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(EngineApplication.class);
 
@@ -20,16 +24,19 @@ public class EngineApplication implements CommandLineRunner {
 		SpringApplication.run(EngineApplication.class, args);
 	}
 
-    public RulesProcessor processor;
+    public ShoppingCartProcessor processor;
 
-    public EngineApplication(RulesProcessor processor) {
+    public EngineApplication(ShoppingCartProcessor processor) {
         this.processor = processor;
     }
 
-    @Override
+//    Leave here for testing purpose only
+//    @Override
     public void run(String... strings) throws Exception {
         // client 1
-        ShoppingCart cartClient1 = new ShoppingCart("alex");
+        ShoppingCart cartClient1 = new ShoppingCart("Mike");
+        cartClient1.setShoppingItems(Arrays.asList(new CartItem("smartphone")));
+
         log.info("Cart before: Discounted="+ cartClient1.getDiscounted());
 
         this.processor.process(EngineMode.STATELESS, cartClient1, "clientID1");

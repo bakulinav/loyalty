@@ -4,8 +4,12 @@ import com.loyalty.dto.engine.BatchProcessRequest;
 import com.loyalty.dto.engine.BatchProcessResponse;
 import com.loyalty.dto.engine.ProcessRequest;
 import com.loyalty.dto.engine.ProcessResponse;
+import com.loyalty.engine.ShoppingCartProcessor;
+import com.loyalty.engine.model.ProcessReport;
+import com.loyalty.model.ShoppingCart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,17 +25,27 @@ import java.util.stream.Collectors;
 public class ProcessingController {
     private static final Logger log = LoggerFactory.getLogger(ProcessingController.class);
 
+    private ShoppingCartProcessor scProcessor;
+
+    @Autowired
+    public ProcessingController(ShoppingCartProcessor scProcessor) {
+        this.scProcessor = scProcessor;
+    }
+
     @PostMapping("/cart")
     @ResponseBody
     public ProcessResponse processCart(@RequestBody ProcessRequest eventRequest) {
         log.info("Request to Shopping cart processing: " + eventRequest);
 
-        //TODO: send cart to processing
+        ProcessReport report = scProcessor.process(
+                eventRequest.getState(),
+                eventRequest.getShoppingCart(),
+                eventRequest.getClientId());// TODO: take from Session over authorisation
 
         return new ProcessResponse(
-                eventRequest.getShoppingCart(),
+                report.getSubject(),
                 eventRequest.getClientId(),
-                new ArrayList<>());
+                report.getFiredRules());
     }
 
     @PostMapping("/batch-cart")
