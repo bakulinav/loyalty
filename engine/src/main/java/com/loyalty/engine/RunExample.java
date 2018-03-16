@@ -1,6 +1,8 @@
 package com.loyalty.engine;
 
+import com.loyalty.engine.service.ShoppingCartProcessor;
 import com.loyalty.model.CartItem;
+import com.loyalty.model.EngineMode;
 import com.loyalty.model.ShoppingCart;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
@@ -15,25 +17,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Component
+//@Component
 public class RunExample  implements CommandLineRunner {
     private static final Logger log = LoggerFactory.getLogger(RunExample.class);
 
     private KieContainer kc;
     private KieLoggers kl;
     private KieServices ks;
+    private ShoppingCartProcessor processor;
 
     @Autowired
-    public RunExample(KieContainer kc, KieLoggers kl, KieServices ks) {
+    public RunExample(KieContainer kc, KieLoggers kl, KieServices ks, ShoppingCartProcessor scProcessor) {
         this.kc = kc;
         this.kl = kl;
         this.ks = ks;
+        this.processor = scProcessor;
         log.info("Init RunExample component");
     }
 
@@ -43,6 +46,7 @@ public class RunExample  implements CommandLineRunner {
 //        statelessCase();
 //        statelessOverCommandCase();
 //        statelessBatchExecutorCase();
+        statelessClientScope();
     }
 
     private void statefulCase() {
@@ -58,7 +62,7 @@ public class RunExample  implements CommandLineRunner {
         List list= new ArrayList<Integer>();
         loyaltyKS.setGlobal("list", list);
         loyaltyKS.setGlobal("msg", "Hello");
-        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("RulesProcessor"));
+        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("ShoppingCartProcessor"));
 
         // LISTENERS
 //		loyaltyKS.addEventListener(new DebugAgendaEventListener());
@@ -88,7 +92,7 @@ public class RunExample  implements CommandLineRunner {
 
         // GLOBALS
         List list= new ArrayList<Integer>();
-        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("RulesProcessor"));
+        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("ShoppingCartProcessor"));
 
         // FACTS
         log.info("Add facts");
@@ -112,7 +116,7 @@ public class RunExample  implements CommandLineRunner {
 
         // GLOBALS
         List list= new ArrayList<Integer>();
-        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("RulesProcessor"));
+        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("ShoppingCartProcessor"));
 
         // FACTS
         log.info("Add facts");
@@ -142,7 +146,7 @@ public class RunExample  implements CommandLineRunner {
 
         // GLOBALS
         List list= new ArrayList<Integer>();
-        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("RulesProcessor"));
+        loyaltyKS.setGlobal("logger", LoggerFactory.getLogger("ShoppingCartProcessor"));
 
         // FACTS
         log.info("Add facts");
@@ -170,5 +174,25 @@ public class RunExample  implements CommandLineRunner {
         log.info("Cart from " + cartTwo.getCustomerId() + " after processing. Discounted? " + cartTwo.getDiscounted());
 
         log.info("Clean up KIE session");
+    }
+
+    private void statelessClientScope() {
+        // client 1
+        ShoppingCart cartClient1 = new ShoppingCart("Mike");
+        cartClient1.setShoppingItems(Arrays.asList(new CartItem("smartphone")));
+
+        log.info("Cart before: Discounted="+ cartClient1.getDiscounted());
+
+        this.processor.process(EngineMode.STATELESS, cartClient1, "clientID1");
+
+        log.info("Cart after: Discounted="+ cartClient1.getDiscounted());
+
+        // client 2
+        ShoppingCart cartClient2 = new ShoppingCart("mike");
+        log.info("Cart before: Discounted="+ cartClient2.getDiscounted());
+
+        this.processor.process(EngineMode.STATELESS, cartClient2, "clientID2");
+
+        log.info("Cart after: Discounted="+ cartClient2.getDiscounted());
     }
 }
