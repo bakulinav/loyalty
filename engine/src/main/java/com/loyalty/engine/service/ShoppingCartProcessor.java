@@ -1,4 +1,4 @@
-package com.loyalty.engine;
+package com.loyalty.engine.service;
 
 import com.loyalty.engine.model.ProcessReport;
 import com.loyalty.model.EngineMode;

@@ -1,6 +1,6 @@
 package com.loyalty.engine.api;
 
-import com.loyalty.engine.ShoppingCartProcessor;
+import com.loyalty.engine.service.ShoppingCartProcessor;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,8 +14,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @WebAppConfiguration

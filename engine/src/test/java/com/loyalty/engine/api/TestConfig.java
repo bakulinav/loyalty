@@ -1,6 +1,6 @@
 package com.loyalty.engine.api;
 
-import com.loyalty.engine.ShoppingCartProcessor;
+import com.loyalty.engine.service.ShoppingCartProcessor;
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
