@@ -43,6 +43,9 @@
 				{
 					"name": "Process single cart",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -69,6 +72,82 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"customer\", \"password\": \"password\"}"
+						},
+						"url": {
+							"raw": "http://{{loyalty_host}}:{{loyalty_port}}/login",
+							"protocol": "http",
+							"host": [
+								"{{loyalty_host}}"
+							],
+							"port": "{{loyalty_port}}",
+							"path": [
+								"login"
+							]
+						},
+						"description": "Engine Login endpoint to get JWT token"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{loyalty_host}}:{{loyalty_port}}/logout",
+							"protocol": "http",
+							"host": [
+								"{{loyalty_host}}"
+							],
+							"port": "{{loyalty_port}}",
+							"path": [
+								"logout"
+							]
+						},
+						"description": "Engine Login endpoint to get JWT token"
+					},
+					"response": []
+				},
+				{
+					"name": "Home",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://{{loyalty_host}}:{{loyalty_port}}/",
+							"protocol": "http",
+							"host": [
+								"{{loyalty_host}}"
+							],
+							"port": "{{loyalty_port}}",
+							"path": [
+								""
+							]
+						},
+						"description": "Default home endpoint of API"
+					},
+					"response": []
 				}
 			]
 		},
@@ -79,6 +158,16 @@
 				{
 					"name": "Process Shopping Cart",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUyMjA3NzQ5M30.1gP2b9EM8VOcmcgt9VQE5cGcPxfF9pFRtEL77LpQNSKuqh2VbM51sfnivZyfTF_kK24IM4rrJZ9rIwVqBQ91zQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -133,6 +222,35 @@
 							]
 						},
 						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"clientID\": \"admin\"}"
+						},
+						"url": {
+							"raw": "http://{{engine_host}}:{{engine_port}}/login",
+							"protocol": "http",
+							"host": [
+								"{{engine_host}}"
+							],
+							"port": "{{engine_port}}",
+							"path": [
+								"login"
+							]
+						},
+						"description": "Engine Login endpoint to get JWT token"
 					},
 					"response": []
 				}

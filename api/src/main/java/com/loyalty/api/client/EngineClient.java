@@ -6,8 +6,10 @@ import com.loyalty.dto.engine.ProcessResponse;
 import com.loyalty.dto.engine.ProcessRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.ConnectException;
 import java.net.URI;
 
 public class EngineClient {
@@ -23,13 +25,21 @@ public class EngineClient {
         log.info("Send shopping cart to processing to Engine");
         RestTemplate engineRest = new RestTemplate();
 
-        return engineRest.postForObject(engineUrl + "/process/cart", req, ProcessResponse.class);
+        try {
+            return engineRest.postForObject(engineUrl + "/process/cart", req, ProcessResponse.class);
+        } catch (RestClientException ex) {
+            throw new RuntimeException("Unable to send message to Engine service", ex);
+        }
     }
 
     public BatchProcessResponse processBatchShoppingCart(BatchProcessRequest req) {
-        log.info("Send shopping cart to processing to Engine");
+        log.info("Send batch to processing to Engine");
         RestTemplate engineRest = new RestTemplate();
 
-        return engineRest.postForObject(engineUrl + "/process/batch-cart", req, BatchProcessResponse.class);
+        try {
+            return engineRest.postForObject(engineUrl + "/process/batch-cart", req, BatchProcessResponse.class);
+        } catch (RestClientException ex) {
+            throw new RuntimeException("Unable to send message to Engine service", ex);
+        }
     }
 }
